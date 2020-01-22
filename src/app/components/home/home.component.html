@@ -1,0 +1,12 @@
+<div class=" you row" *ngFor="let data of datas " [ngClass]="[data.user === mainUser? 'me': 'you']">
+    <div class=" col-11 chat-box">
+        <div class="chat-box-inner">
+            <h4>{{data.user}} <span> 20/01/2020, 01:10 am</span></h4>
+            <div class="card">
+                <div class="card-body">
+                    <p>{{data.message}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

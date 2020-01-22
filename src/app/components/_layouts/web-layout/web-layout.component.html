@@ -1,0 +1,198 @@
+<div class="chat bg-white">
+    <div class="border clearfix">
+        <aside>
+            <div class="row no-gutters">
+                <div class="bar-1 col-4 bg-primary text-center  pt-2 pb-4">
+
+                    <div class=" w-100 e-box text-center">
+                        <div class="p-4 e e-round">
+
+                        </div>
+                    </div>
+                    <div class=" w-100 e-box text-center">
+                        <div class="p-4 e e-round"> </div>
+                    </div>
+
+                    <div class=" w-100 e-box text-center">
+                        <div class="p-4 e e-round"> </div>
+                    </div>
+                    <div class="author-saint" title="This app was developed by Saint">
+
+                        <p>With <i class="fa fa-heart-o"></i><br> by <span>Saint</span> </p>
+                    </div>
+                </div>
+                <div class="bar-2 col-8 bg-light pb-4">
+                    <div class="bar-2-inner-con d-flex h-100 flex-column  mb-3">
+                        <div class="d-flex w-100 e-box">
+                            <div class="">
+                                <div class="p-4 e e-round"> </div>
+                            </div>
+                            <div class=" w-100">
+                                <div class="p-2 w-100 mt-2 e"> </div>
+                                <div class="p-1 w-50 mt-2 e"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex w-100 e-box">
+                            <div class="">
+                                <div class="p-4 e e-round"> </div>
+                            </div>
+                            <div class=" w-100">
+                                <div class="p-2 w-100 mt-2 e"> </div>
+                                <div class="p-1 w-50 mt-2 e"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex w-100 e-box">
+                            <div class="">
+                                <div class="p-4 e e-round"> </div>
+                            </div>
+                            <div class=" w-100">
+                                <div class="p-2 w-100 mt-2 e"> </div>
+                                <div class="p-1 w-50 mt-2 e"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex w-100 e-box">
+                            <div class="">
+                                <div class="p-4 e e-round"> </div>
+                            </div>
+                            <div class=" w-100">
+                                <div class="p-2 w-100 mt-2 e"> </div>
+                                <div class="p-1 w-50 mt-2 e"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- <div class="bar-3 col-9"> -->
+        <main>
+            <div class="chat-bg"></div>
+
+            <div class="container">
+
+                <header class="chat-header p-3  ">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="d-flex justify-content-start" style="align-items: center !important;">
+                            <div>
+                                <div class="video_icon">
+                                    <a style="text-transform: capitalize;" class="popup-video video_play_button ">
+                                       {{mainUser.charAt(0)}}
+                                    </a>
+                                </div>
+                            </div>
+                            <h6 style="text-transform: capitalize;" class="pl-4">{{mainUser}}<span class="typing-text">Typing...</span></h6>
+                        </div>
+
+                        <div>
+
+                            <button [matMenuTriggerFor]="user" mat-icon-button aria-label="Example icon-button with a menu">
+                                <mat-icon>account_circle</mat-icon>
+                              </button>
+
+                            <mat-menu #user="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>account_circle</mat-icon>
+                                  <span>{{mainUser}}</span>
+                                </button>
+
+                                <button (click)=" addUser()" mat-menu-item>
+                                    <mat-icon>add</mat-icon>
+                                  <span>Add user</span>
+                                </button>
+
+
+
+                            </mat-menu>
+                            <button mat-icon-button aria-label="Example icon-button with a menu">
+                                <mat-icon>videocam</mat-icon>
+                              </button>
+
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                              </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>
+                                  <mat-icon>dialpad</mat-icon>
+                                  <span>Redial</span>
+                                </button>
+                                <button mat-menu-item disabled>
+                                  <mat-icon>voicemail</mat-icon>
+                                  <span>Check voice mail</span>
+                                </button>
+                                <button mat-menu-item>
+                                  <mat-icon>notifications_off</mat-icon>
+                                  <span>Disable alerts</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+
+
+                </header>
+
+
+
+
+                <div id="messages" class="chat-messages">
+
+                    <router-outlet></router-outlet>
+
+                </div>
+
+
+                <form [formGroup]="formChat" class="chat-form" (ngSubmit)="sendMessage()">
+                    <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
+                        <div class="flex-1  w-100">
+                            <input name="message" formControlName="message" class="form-control" type="text">
+                        </div>
+
+                        <div>
+                            <button [disabled]="this.formChat.invalid" type="send" class="eee ml-2 text-dark" mat-icon-button>
+                        <mat-icon class="ml-2">send</mat-icon>
+                        </button>
+                        </div>
+
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- 
+                <form (ngSubmit)="sendMessage()" class="chat-form">
+
+                    <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
+                        <div class="flex-1  w-100">
+                            <input name="body" formControlName="body" placeholder="type" class="form-control shadow-sm">
+                        </div>
+                        <div>
+                            <button type="send" class="eee ml-1 " mat-icon-button>
+                        <mat-icon class="ml-2">send</mat-icon>
+                        </button>
+                        </div>
+                    </div>
+
+                </form> -->
+
+            </div>
+        </main>
+        <!-- </div> -->
+    </div>
+</div>
