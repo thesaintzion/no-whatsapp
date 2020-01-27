@@ -1,0 +1,28 @@
+:host ::ng-deep {
+    .primary {
+        background: #082dff;
+    }
+    .text-primary {
+        color: #082dff !important;
+    }
+    h4 {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+        font-size: inherit
+    }
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        width: 5px;
+        border-radius: 13px;
+        background-clip: padding-box;
+        height: 7px;
+        // border: 10px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #dcdcdc !important;
+    }
+    .mat-list-icon {
+        color: rgba(0, 0, 0, 0.54);
+    }
+}

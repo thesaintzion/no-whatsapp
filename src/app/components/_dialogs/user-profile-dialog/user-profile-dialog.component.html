@@ -1,0 +1,33 @@
+<div mat-dialog-content>
+    <img class="w-100" src="../../../../assets/img/Aggital-2018-in-Review-13.jpg">
+    <!-- <p class="mb-4 pt-3 " style="text-transform: capitalize !important;"><strong>{{user.userName}}</strong></p> -->
+    <div class="d-flex justify-content-between mt-2">
+        <div>
+            <h4 style="text-transform: capitalize !important;" mat-line>{{userName}}</h4>
+            <p class="text-muted" mat-line>@{{userSlug}} </p>
+        </div>
+        <div class="">
+            <button class="" mat-button></button>
+            <button class="primary text-white " mat-raised-button>Add Friend <mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+
+    <mat-list>
+        <mat-list-item>
+            <mat-icon mat-list-icon>info</mat-icon>
+            <h4 style="text-transform: capitalize !important;" mat-line>Joned</h4>
+            <p class="text-muted" mat-line>{{createdAt}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+            <mat-icon mat-list-icon>perm_contact_calendar</mat-icon>
+            <h4 style="text-transform: capitalize !important;" mat-line>Email</h4>
+            <p class="text-muted" mat-line>{{mainUserEmail}}</p>
+            <h4 style="text-transform: capitalize !important;" mat-line>Email</h4>
+            <p class="text-muted" mat-line>{{mainUserEmail}}</p>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end mt-4">
+    <button mat-dialog-close class="mat-button-rounded  sexy-btn float-right" color="warn" mat-button>Close</button>
+</div>

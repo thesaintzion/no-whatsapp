@@ -22,51 +22,16 @@
                     </div>
                 </div>
                 <div class="bar-2 col-8 bg-light pb-4">
-                    <div class="bar-2-inner-con d-flex h-100 flex-column  mb-3">
-                        <div class="d-flex w-100 e-box">
+                    <div class="bar-2-inner-con  h-100   mb-3">
+
+                        <div style="align-items: center;" class="d-flex w-100 e-box" matRipple *ngFor="let user of users let inde = index">
                             <div class="">
                                 <div class="p-4 e e-round"> </div>
                             </div>
                             <div class=" w-100">
-                                <div class="p-2 w-100 mt-2 e"> </div>
-                                <div class="p-1 w-50 mt-2 e"></div>
+                                <div style="text-transform: capitalize !important;" class=" w-100 user-name"> {{user.userName}} </div>
+                                <div class=" w-50 user-time"><small>{{user.updatedAt | date:  "dd.MM.y"}} </small></div>
                             </div>
-
-                        </div>
-
-
-                        <div class="d-flex w-100 e-box">
-                            <div class="">
-                                <div class="p-4 e e-round"> </div>
-                            </div>
-                            <div class=" w-100">
-                                <div class="p-2 w-100 mt-2 e"> </div>
-                                <div class="p-1 w-50 mt-2 e"></div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="d-flex w-100 e-box">
-                            <div class="">
-                                <div class="p-4 e e-round"> </div>
-                            </div>
-                            <div class=" w-100">
-                                <div class="p-2 w-100 mt-2 e"> </div>
-                                <div class="p-1 w-50 mt-2 e"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="d-flex w-100 e-box">
-                            <div class="">
-                                <div class="p-4 e e-round"> </div>
-                            </div>
-                            <div class=" w-100">
-                                <div class="p-2 w-100 mt-2 e"> </div>
-                                <div class="p-1 w-50 mt-2 e"></div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -82,42 +47,58 @@
 
                 <header class="chat-header p-3  ">
                     <div class="d-flex w-100 justify-content-between">
-                        <div class="d-flex justify-content-start" style="align-items: center !important;">
+                        <div (click)="sharedService.openUserProfileDialog(userEmail)" class="d-flex justify-content-start mat-button" style="align-items: center !important;">
                             <div>
                                 <div class="video_icon">
                                     <a style="text-transform: capitalize;" class="popup-video video_play_button ">
-                                       {{mainUser.charAt(0)}}
+                                        {{this.userNameFirstLater}}
                                     </a>
                                 </div>
                             </div>
-                            <h6 style="text-transform: capitalize;" class="pl-4">{{mainUser}}<span class="typing-text">Typing...</span></h6>
+
+                            <!-- <button ></button> -->
+                            <h6 matRipple matRippleColor="blue" style="text-transform: capitalize;" class="pl-4 mat-button">{{userName}}<span class="typing-text">Typing...</span></h6>
                         </div>
 
                         <div>
 
-                            <button [matMenuTriggerFor]="user" mat-icon-button aria-label="Example icon-button with a menu">
+                            <button matRipple matRippleColor="blue" [matMenuTriggerFor]="user" mat-icon-button aria-label="Example icon-button with a menu">
                                 <mat-icon>account_circle</mat-icon>
                               </button>
 
                             <mat-menu #user="matMenu">
                                 <button mat-menu-item>
                                     <mat-icon>account_circle</mat-icon>
-                                  <span>{{mainUser}}</span>
+                                  <span>
+                                      {{userName}} 
+                                  </span>
+                               
+                               
+                                  
                                 </button>
+                                <p mat-menu-item>
+                                    <mat-icon>alternate_email</mat-icon>
 
-                                <button (click)=" addUser()" mat-menu-item>
+                                    {{userEmail}}
+                                </p>
+
+                                <!-- <button mat-menu-item>
+                                    <mat-icon>account_circle</mat-icon>
+                                  
+                                  
+                                  
+                                </button> -->
+                                <!-- <button (click)=" addUser()" mat-menu-item>
                                     <mat-icon>add</mat-icon>
                                   <span>Add user</span>
-                                </button>
-
-
+                                </button> -->
 
                             </mat-menu>
-                            <button mat-icon-button aria-label="Example icon-button with a menu">
+                            <button matRipple matRippleColor="blue" mat-icon-button aria-label="Example icon-button with a menu">
                                 <mat-icon>videocam</mat-icon>
                               </button>
 
-                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <button matRipple matRippleColor="blue" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                               </button>
                             <mat-menu #menu="matMenu">
@@ -150,7 +131,7 @@
                 </div>
 
 
-                <form [formGroup]="formChat" class="chat-form" (ngSubmit)="sendMessage()">
+                <form [formGroup]="formChat" class="chat-form shadow-sm" (ngSubmit)="sendMessage()">
                     <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
                         <div class="flex-1  w-100">
                             <input name="message" formControlName="message" class="form-control" type="text">

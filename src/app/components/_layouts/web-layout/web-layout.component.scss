@@ -91,6 +91,47 @@
 
 .bar-2 {
     position: relative;
+    height: 100vh;
+    overflow-y: scroll !important;
+    padding-bottom: 200px;
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        width: 6px;
+        border-radius: 13px;
+        background-clip: padding-box;
+        // height: 7px;
+        // border: 10px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #dcdcdc !important;
+    }
+    .user-name {
+        font-size: 14px;
+    }
+    .user-time {
+        font-size: 11px;
+    }
+    .e-round {
+        position: relative;
+        z-index: 2;
+        &::after {
+            content: '';
+            height: 15px;
+            width: 15px;
+            position: absolute;
+            top: 0;
+            right: 0px;
+            z-index: 3;
+            background-color: rgb(4, 195, 4) !important;
+            border-radius: 50%;
+            border: 3px solid #f8f9fa;
+        }
+    }
+    .e-round.offline {
+        &::after {
+            background-color: red !important;
+        }
+    }
 }
 
 aside {
@@ -101,7 +142,8 @@ aside {
     float: left;
     left: 0;
     top: 0;
-    z-index: 9999;
+    z-index: 99;
+    overflow: hidden !important;
 }
 
 aside .aside-inner-con {
@@ -276,6 +318,7 @@ main {
     }
     .chat-form {
         width: 100%;
+        background-color: transparent !important;
         button {
             background-color: #082dff;
             color: #ffffff !important;

@@ -11,8 +11,14 @@ import { MaterialModule } from './shared/materials/material';
 import { MobileLayoutComponent } from './components/_layouts/mobile-layout/mobile-layout.component';
 import { LayoutRootComponent } from './components/_layouts/layout-root/layout-root.component';
 import { ApiService } from './services/api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+import { AboutDialogComponent } from './components/_dialogs/about-dialog/about-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { UserProfileDialogComponent } from './components/_dialogs/user-profile-dialog/user-profile-dialog.component';
+
 
 
 @NgModule({
@@ -21,7 +27,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     WebLayoutComponent,
     MobileLayoutComponent,
-    LayoutRootComponent
+    LayoutRootComponent,
+    RegisterComponent,
+    AboutDialogComponent,
+    LoginComponent,
+    UserProfileDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +42,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
 
   ],
-  providers: [ApiService],
+  providers: [ApiService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents:[
     WebLayoutComponent,
-    MobileLayoutComponent
+    MobileLayoutComponent,
+    AboutDialogComponent,
+    UserProfileDialogComponent
   ]
 })
 export class AppModule { }

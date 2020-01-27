@@ -1,0 +1,71 @@
+<div class="main " style="min-height: 100vh; overflow: hidden;">
+    <div class="chat-bg "></div>
+    <div class="container animated fadeInUp">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-xl-3 mx-auto " style="margin-top: 10%;">
+                <div *ngIf="loading else showForm">
+                    <div class="loading-con mt-5">
+                        <svg class="spinner-container" viewBox="0 0 44 44">
+      <circle class="path" cx="22" cy="22" r="20" fill="none" stroke-width="4"></circle>
+  </svg>
+                    </div>
+                </div>
+                <ng-template #showForm>
+                    <h4>Loing</h4>
+                    <div class="border pb-4 card" style="box-shadow: 0 !important; ">
+                        <div class="card-body">
+
+                            <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- email -->
+                                        <mat-form-field class="w-100">
+                                            <input matInput placeholder="Email" formControlName="userEmail">
+                                            <mat-error *ngIf="loginForm.controls.userEmail.errors?.required">
+                                                Email is <strong>required</strong>
+                                            </mat-error>
+
+                                            <mat-error *ngIf="loginForm.controls.userEmail.errors?.email && (loginForm.controls.userEmail.dirty || loginForm.controls.userEmail.touched)">
+                                                Please provide a <strong>valid email</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <!-- password -->
+                                        <mat-form-field class="w-100">
+                                            <input matInput placeholder="Password" formControlName="userPass">
+                                            <mat-error *ngIf="loginForm.controls.userPass.errors?.required">
+                                                Password is <strong>required</strong>
+                                            </mat-error>
+
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-12">
+
+
+                                    </div>
+
+                                </div>
+                                <div class="mt-3 text-center">
+                                    <button style="background-color:  #082dff; color:  #ffffff !important" class="shadow-sm " mat-raised-button>Log In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                    <footer class="text-center d-flex justify-content-around" style="margin-top: 30%;">
+                        <button class="text-muted" routerLink="/register" mat-button><mat-icon>arrow_back</mat-icon> Register</button>
+
+                        <button matTooltip="About" class="text-muted" (click)="sharedService.openAboutDialog()" mat-icon-button> <mat-icon>info</mat-icon></button>
+                    </footer>
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

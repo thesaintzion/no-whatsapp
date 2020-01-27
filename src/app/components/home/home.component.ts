@@ -18,11 +18,14 @@ export class HomeComponent implements OnInit {
 
   
   user: any  = localStorage.getItem('user');
-  mainUser =   this.user;
+
+  userID: any;
+  userName: any;
+  userEmail: any;
 
 
   constructor(private apiService: ApiService) { 
-    this.socket = io(this.url);
+    this.socket = io();
   }
 
   
@@ -40,6 +43,30 @@ export class HomeComponent implements OnInit {
   }
 
 
+   //get profile
+
+   getProfile(){
+    this.apiService.getProfile().subscribe(
+      res => {
+this.userID = res.user._id;
+this.userName = res.user.userName;
+this.userEmail = res.user.userEmail;
+this.getId(res.user._id);
+
+console.log(res);
+      },
+      err => {
+console.log(err);
+      }
+    )
+  }
+
+  // 
+  getId(userId: any){
+    this.userID = userId;
+  }
+
+
   ngOnInit() {
 
     this.socket.on('update', () => {
@@ -54,7 +81,8 @@ export class HomeComponent implements OnInit {
       console.log('we sent it back', data);
   });
 
- 
+  //
+this.getProfile();
   }
 
   

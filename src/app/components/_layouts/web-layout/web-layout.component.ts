@@ -6,6 +6,8 @@ import { Messase } from '../../../models/message.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import * as io from  'socket.io-client';
+import { SharedService } from 'src/app/services/shared.service';
+
 
 
 
@@ -17,63 +19,53 @@ import * as io from  'socket.io-client';
 export class WebLayoutComponent implements OnInit {
   
   formChat;
-
   messages: Messase[];
-  user: any  = localStorage.getItem('user');
- mainUser =   this.user;
- socket;
+  socket;
+
+ userID: any;
+ userName: any;
+ userEmail: any;
+ userNameFirstLater = '';
+ users: [];
   readonly url = 'http://localhost:3500/';
  
+  
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private snackBar: MatSnackBar,) { 
-    this.socket = io(this.url);
+
+
+  constructor(public sharedService: SharedService, private router: Router,
+    private apiService: ApiService,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+    
+    ) { 
+    this.socket = io();
     this.formChat =  this.formBuilder.group({
-      message: ['', [Validators.required]],
-      
+      message: ['', [Validators.required]]
     });
-
-   
-
 
   }
 
 
-
   sendMessage(){
-    this.formChat.value.message = '';
-if(this.user === 'null' || this.user === null || this.user === ''){
-  this.openSnackBar(`Please add user`, 'Ok', 2000, 'bg-danger');
-}else{
+    
+
 let message  = {
 message: this.formChat.value.message,
-user: this.user, 
 }
-console.log('the message', message);
 
 this.apiService.sendMessage(message).subscribe(
 res => {
 console.log(res);
+this.formChat.value.message = '';
 },
 err => {
+  this.openSnackBar(err.error.message, 'Ok', 2000, 'bg-danger');
 console.log(err);
+
 });
-}
-
 window.scrollTo(0,document.body.scrollHeight);
-   
   }
-
-  addUser(){
-    this.user = prompt('whats you name');
-     localStorage.setItem('user', this.user);
-      if(this.user === 'null' || this.user === null){
-        this.openSnackBar(`Please add user`, 'Ok', 2000, 'bg-danger');
-      }else{
-        this.openSnackBar(`${this.user} added`, 'Ok', 2000, 'bg-success');
-        this.mainUser = this.user;
-      }
-  }
-
   openSnackBar(message: string, action: string, duration: number, panelClass: string) {
     this.snackBar.open(message, action, {
       duration,
@@ -81,22 +73,70 @@ window.scrollTo(0,document.body.scrollHeight);
     });
   }
 
+  //get profile 
+  getProfile(){
+    this.apiService.getProfile().subscribe(
+      res => {
+this.userID = res.user._id;
+this.userName = res.user.userName;
+this.userEmail = res.user.userEmail;
+
+this.getFirstLater(this.userName);
+
+console.log(res);
+      },
+      err => {
+console.log(err);
+this.router.navigate(['/login']);
+      }
+    )
+  }
+
+
+  getFirstLater(userName: any){
+    this.userNameFirstLater = userName.charAt(0);
+  }
+
+  getAllUsers(){
+    this.apiService.getAllUsers().subscribe(
+      res => {
+
+this.users = res.users;
+console.log(this.users);
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
 
   ngOnInit() {
-    if(this.user === 'null' || this.user === null){
-     
-      this.addUser();
-    }
-
-  
 // socket update
     this.socket.on('update', () => {
       window.scrollTo(0,document.body.scrollHeight);
     });
+    
+    // checket online status
+    this.socket.on('online', (status) => {
+      console.log(status);
+      this.getAllUsers();
+    });
 
+
+    
+    this.socket.on('chat', function(data) {
+      console.log('hello form here', data);
+  });
+
+    // 
+    this.getProfile();
+// 
+    //  this.getAllUsers();
+
+   
+    
+  }
 
  
-   
-  }
 
 }

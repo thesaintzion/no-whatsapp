@@ -1,0 +1,62 @@
+:host ::ng-deep {
+    .main {
+        background-color: #f8f9fa;
+        // background: gray;
+        position: relative;
+    }
+    .blue {
+        background-color: #082dff !important;
+        border-radius: 30px !important;
+    }
+    .chat-bg {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .06;
+        background-image: url('../../../assets/img/bg-chat-tile_9e8a2898faedb7db9bf5638405cf81ae.png');
+        background-repeat: repeat;
+        background-attachment: fixed;
+        // background-size: 50%;
+        display: none;
+    }
+    .card {
+        box-shadow: none !important;
+        box-shadow: 0 !important;
+    }
+    form button.mat-raised-button {
+        // background-color: #082dff;
+        color: #082dff;
+        // line-height: 40px;
+        // border-radius: 30px;
+        width: 70% !important;
+        margin: 0 auto;
+        font-size: 13px !important;
+    }
+    .mat-form-field {
+        font-size: 12px !important;
+        margin-bottom: 20px;
+    }
+    .mat-error {
+        font-size: 11px !important;
+        font-weight: 100;
+    }
+    h4 {
+        text-align: center;
+        font-weight: 300;
+        font-size: 20px;
+        // color: #082dff;
+        // color: ;
+    }
+    @media (max-width:767px) {
+        .main {
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 0;
+        }
+        .card {
+            border: 0 !important;
+        }
+    }
+}
