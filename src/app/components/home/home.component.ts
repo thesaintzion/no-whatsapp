@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private apiService: ApiService) { 
-    this.socket = io();
+    this.socket = io(this.url);
   }
 
   
@@ -69,20 +69,17 @@ console.log(err);
 
   ngOnInit() {
 
-    this.socket.on('update', () => {
-      this.getMessages();
-      window.scrollTo(0,document.body.scrollHeight);
-    });
-
+    this.apiService.socketListen('update').subscribe(
+      res =>{
+        this.getMessages();
+        window.scrollTo(0,document.body.scrollHeight);
+      })
+  
     this.getMessages();
-
-
-    this.socket.on('chat', function(data) {
-      console.log('we sent it back', data);
-  });
 
   //
 this.getProfile();
+window.scrollTo(0, document.body.scrollHeight);
   }
 
   

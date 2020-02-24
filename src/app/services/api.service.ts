@@ -1,60 +1,68 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+
+
 // Get requests //
 // getMessagesUrl = 'http://localhost:3500/api/chat/get-messages';
 getMessagesUrl = 'api/chat/get-messages';
-
-// getUsersUrl = 'http://localhost:3500/api/user/all-users';
-getUsersUrl = 'api/user/all-users';
-
-// getSingleUserUrl = 'http://localhost:3500/api/user/sinlge-user';
-getSingleUserUrl = 'api/user/sinlge-user';
-
 
 
 // Post requests //
 // sendMessageUrl = 'http://localhost:3500/api/chat/message';
 sendMessageUrl = 'api/chat/message';
 
-// Authentication //
-// registerUserUrl = 'http://localhost:3500/api/user/register';
-registerUserUrl = 'api/user/register';
 
-// loginUserUrl = 'http://localhost:3500/api/user/login';
-loginUserUrl = 'api/user/login';
+// userUrl = 'http://localhost:3500/api/user';
+userUrl = 'api/user';
 
-// profileUrl = 'http://localhost:3500/api/user/profile';
-profileUrl = 'api/user/profile';
+socket;
+readonly socketUrl: string = 'http://localhost:3500/';
+  constructor(private http: HttpClient, private router: Router) { 
+    this.socket = io();
+  }
+  
+  //SOCKET//
+  socketListen(event: string){
+    return new Observable((subscriber) =>{
+      this.socket.on(event, (data) => {
+      subscriber.next(data);
+    });
+    });
+  }
+  
+  
+  sockEmit(event: string, data: any){
+    this.socket.emit(event, data);
+  }
 
-  constructor(private http: HttpClient) { }
 
 ///////// Authentication ///////
   registerUser(user: any){
-    return this.http.post<any>(this.registerUserUrl, user);
+    return this.http.post<any>(`${this.userUrl}/register`, user);
   }
   loginUser(user: any){
-    return this.http.post<any>(this.loginUserUrl, user);
+    return this.http.post<any>(`${this.userUrl}/login`, user);
   }
 
-// 
   getProfile(){
-    return this.http.get<any>(this.profileUrl);
+    return this.http.get<any>(`${this.userUrl}/profile`);
   }
 
-  // 
   getAllUsers(){
-    return this.http.get<any>(this.getUsersUrl);
+    return this.http.get<any>(`${this.userUrl}/all-users`);
   }
 
   getSingleUsers(userEmail: any){
-    return this.http.get<any>(`${this.getSingleUserUrl}/${userEmail}`);
+    return this.http.get<any>(`${this.userUrl}/sinlge-user/${userEmail}`);
   }
 
   

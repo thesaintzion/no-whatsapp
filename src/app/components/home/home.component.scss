@@ -1,22 +1,35 @@
- .chat-box h4 {
+ .chat-box .user-name {
      margin-bottom: 0;
      font-size: 17px;
  }
  
- .chat-box h4 span {
+ .chat-box .user-name span {
      font-size: 14px;
      font-weight: 200;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  }
  
  .me,
  .you {
      padding-top: 10px;
-     padding-bottom: 10px;
+     padding-bottom: 0 !important;
      margin-bottom: 10px;
+ }
+ 
+ .sent-icon {
+     .mat-icon {
+         font-size: 18px;
+         color: #03ecb2;
+     }
+ }
+ 
+ .chat-box .card {
+     border-radius: 20px;
  }
  
  .chat-box .card .card-body {
      padding: 0.50rem;
+     padding-bottom: 0 !important;
  }
  
  .chat-box .card p {
@@ -29,7 +42,7 @@
  }
  
  .me .chat-box .card {
-     background-color: rgb(8, 45, 255, 0.7);
+     background-color: rgb(5, 39, 230);
      //  background-color: rgb(97, 172, 253);
      color: #ffffff;
      border: 0;
@@ -41,4 +54,9 @@
  
  .me .chat-box .chat-box-inner {
      float: right;
+ }
+ 
+ .row.animate-custom:last-of-type {
+     -webkit-animation-name: fadeInLeft;
+     animation-name: fadeInLeft;
  }

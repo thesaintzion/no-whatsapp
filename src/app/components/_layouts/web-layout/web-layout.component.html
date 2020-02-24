@@ -2,7 +2,7 @@
     <div class="border clearfix">
         <aside>
             <div class="row no-gutters">
-                <div class="bar-1 col-4 bg-primary text-center  pt-2 pb-4">
+                <div class="bar-1 col-3 primary text-center  pt-2 pb-4">
 
                     <div class=" w-100 e-box text-center">
                         <div class="p-4 e e-round">
@@ -21,15 +21,15 @@
                         <p>With <i class="fa fa-heart-o"></i><br> by <span>Saint</span> </p>
                     </div>
                 </div>
-                <div class="bar-2 col-8 bg-light pb-4">
+                <div class="bar-2 col-9 pb-4">
                     <div class="bar-2-inner-con  h-100   mb-3">
 
-                        <div style="align-items: center;" class="d-flex w-100 e-box" matRipple *ngFor="let user of users let inde = index">
+                        <div (click)="selectUser(user._id,user.userEmail,user.userName)" style="align-items: center;" class="d-flex w-100 e-box border-bottom" matRipple *ngFor="let user of users let inde = index">
                             <div class="">
                                 <div class="p-4 e e-round"> </div>
                             </div>
                             <div class=" w-100">
-                                <div style="text-transform: capitalize !important;" class=" w-100 user-name"> {{user.userName}} </div>
+                                <div style="text-transform: capitalize !important;" class=" w-100 user-name "> {{user.userName}} </div>
                                 <div class=" w-50 user-time"><small>{{user.updatedAt | date:  "dd.MM.y"}} </small></div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
 
             <div class="container">
 
-                <header class="chat-header p-3  ">
+                <header class="chat-header p-y  ">
                     <div class="d-flex w-100 justify-content-between">
                         <div (click)="sharedService.openUserProfileDialog(userEmail)" class="d-flex justify-content-start mat-button" style="align-items: center !important;">
                             <div>
@@ -123,22 +123,29 @@
 
 
 
-
-                <div id="messages" class="chat-messages">
+                <div *ngIf="startChat else defaultBg " id="messages" class="chat-messages animated fadeInUp">
 
                     <router-outlet></router-outlet>
 
                 </div>
+                <ng-template #defaultBg>
+                    <div class="default-bg  text-center">
+                        <h1>Welcome, {{userName}}</h1>
+                        <!-- <mat-icon>security</mat-icon> -->
+                        <mat-icon> chat</mat-icon>
+                        <p>Remeber there's no reason to give up!! (motivation from <span class="text-dark">@saint</span>)</p>
+                    </div>
+                </ng-template>
 
 
-                <form [formGroup]="formChat" class="chat-form shadow-sm" (ngSubmit)="sendMessage()">
+                <form [formGroup]="formChat" class="chat-form" (ngSubmit)="sendMessage()">
                     <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
                         <div class="flex-1  w-100">
-                            <input name="message" formControlName="message" class="form-control" type="text">
+                            <input name="message" formControlName="message" class="form-control shadow-sm" type="text">
                         </div>
 
                         <div>
-                            <button [disabled]="this.formChat.invalid" type="send" class="eee ml-2 text-dark" mat-icon-button>
+                            <button [disabled]="this.formChat.invalid" type="submit" class="eee ml-2 text-dark bg-white" mat-icon-button>
                         <mat-icon class="ml-2">send</mat-icon>
                         </button>
                         </div>
