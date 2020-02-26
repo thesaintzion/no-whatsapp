@@ -1,29 +1,24 @@
 <div class="chat bg-white">
     <div class="border clearfix">
+
         <aside>
             <div class="row no-gutters">
                 <div class="bar-1 col-3 primary text-center  pt-2 pb-4">
-
                     <div class=" w-100 e-box text-center">
-                        <div class="p-4 e e-round">
-
-                        </div>
+                        <div class="p-4 e e-round"></div>
                     </div>
                     <div class=" w-100 e-box text-center">
                         <div class="p-4 e e-round"> </div>
                     </div>
-
                     <div class=" w-100 e-box text-center">
                         <div class="p-4 e e-round"> </div>
                     </div>
                     <div class="author-saint" title="This app was developed by Saint">
-
                         <p>With <i class="fa fa-heart-o"></i><br> by <span>Saint</span> </p>
                     </div>
                 </div>
                 <div class="bar-2 col-9 pb-4">
                     <div class="bar-2-inner-con  h-100   mb-3">
-
                         <div (click)="selectUser(user._id,user.userEmail,user.userName)" style="align-items: center;" class="d-flex w-100 e-box border-bottom" matRipple *ngFor="let user of users let inde = index">
                             <div class="">
                                 <div class="p-4 e e-round"> </div>
@@ -36,31 +31,42 @@
                     </div>
                 </div>
             </div>
-
         </aside>
 
         <!-- <div class="bar-3 col-9"> -->
         <main>
-            <div class="chat-bg"></div>
 
-            <div class="container">
 
-                <header class="chat-header p-y  ">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div (click)="sharedService.openUserProfileDialog(userEmail)" class="d-flex justify-content-start mat-button" style="align-items: center !important;">
-                            <div>
+            <router-outlet></router-outlet>
+            <div class="d-none">
+                <div class="chat-bg"></div>
+                <header class="chat-header ">
+                    <nav>
+
+                    </nav>
+                    <div class="d-flex w-100 justify-content-between bg-warning">
+                        <div (click)="sharedService.openUserProfileDialog(userEmail)" class="d-flex justify-content-start header-info" style="align-items: center !important;">
+                            <!-- <div>
                                 <div class="video_icon">
                                     <a style="text-transform: capitalize;" class="popup-video video_play_button ">
                                         {{this.userNameFirstLater}}
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
+                            <!-- <div> -->
+                            <!-- <span class="user-name">{{userName}}</span>
+                            <span class="status">Online</span> -->
 
-                            <!-- <button ></button> -->
-                            <h6 matRipple matRippleColor="blue" style="text-transform: capitalize;" class="pl-4 mat-button">{{userName}}<span class="typing-text">Typing...</span></h6>
+                            <mat-list>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon class="bg-white">person</mat-icon>
+                                    <span mat-line>{{userName}}</span>
+                                    <span mat-line>Online</span>
+                                </mat-list-item>
+                            </mat-list>
                         </div>
 
-                        <div>
+                        <div class="nav d-flex justify-content-start align-items-center">
 
                             <button matRipple matRippleColor="blue" [matMenuTriggerFor]="user" mat-icon-button aria-label="Example icon-button with a menu">
                                 <mat-icon>account_circle</mat-icon>
@@ -72,27 +78,11 @@
                                   <span>
                                       {{userName}} 
                                   </span>
-                               
-                               
-                                  
                                 </button>
                                 <p mat-menu-item>
                                     <mat-icon>alternate_email</mat-icon>
-
                                     {{userEmail}}
                                 </p>
-
-                                <!-- <button mat-menu-item>
-                                    <mat-icon>account_circle</mat-icon>
-                                  
-                                  
-                                  
-                                </button> -->
-                                <!-- <button (click)=" addUser()" mat-menu-item>
-                                    <mat-icon>add</mat-icon>
-                                  <span>Add user</span>
-                                </button> -->
-
                             </mat-menu>
                             <button matRipple matRippleColor="blue" mat-icon-button aria-label="Example icon-button with a menu">
                                 <mat-icon>videocam</mat-icon>
@@ -100,58 +90,57 @@
 
                             <button matRipple matRippleColor="blue" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
-                              </button>
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item>
-                                  <mat-icon>dialpad</mat-icon>
-                                  <span>Redial</span>
-                                </button>
-                                <button mat-menu-item disabled>
-                                  <mat-icon>voicemail</mat-icon>
-                                  <span>Check voice mail</span>
-                                </button>
-                                <button mat-menu-item>
-                                  <mat-icon>notifications_off</mat-icon>
-                                  <span>Disable alerts</span>
-                                </button>
-                            </mat-menu>
+                            </button>
                         </div>
                     </div>
-
-
                 </header>
+                <div class="container">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                      <mat-icon>dialpad</mat-icon>
+                      <span>Redial</span>
+                    </button>
+                        <button mat-menu-item disabled>
+                      <mat-icon>voicemail</mat-icon>
+                      <span>Check voice mail</span>
+                    </button>
+                        <button mat-menu-item>
+                      <mat-icon>notifications_off</mat-icon>
+                      <span>Disable alerts</span>
+                    </button>
+                    </mat-menu>
 
 
 
-                <div *ngIf="startChat else defaultBg " id="messages" class="chat-messages animated fadeInUp">
+                    <div *ngIf="startChat else defaultBg " id="messages" class="chat-messages animated fadeInUp">
 
-                    <router-outlet></router-outlet>
+                        <router-outlet></router-outlet>
 
-                </div>
-                <ng-template #defaultBg>
-                    <div class="default-bg  text-center">
-                        <h1>Welcome, {{userName}}</h1>
-                        <!-- <mat-icon>security</mat-icon> -->
-                        <mat-icon> chat</mat-icon>
-                        <p>Remeber there's no reason to give up!! (motivation from <span class="text-dark">@saint</span>)</p>
                     </div>
-                </ng-template>
-
-
-                <form [formGroup]="formChat" class="chat-form" (ngSubmit)="sendMessage()">
-                    <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
-                        <div class="flex-1  w-100">
-                            <input name="message" formControlName="message" class="form-control shadow-sm" type="text">
+                    <ng-template #defaultBg>
+                        <div class="default-bg  text-center">
+                            <h1>Welcome, {{userName}}</h1>
+                            <!-- <mat-icon>security</mat-icon> -->
+                            <mat-icon> chat</mat-icon>
+                            <p>Remeber there's no reason to give up!! (motivation from <span class="text-dark">@saint</span>)</p>
                         </div>
+                    </ng-template>
 
-                        <div>
-                            <button [disabled]="this.formChat.invalid" type="submit" class="eee ml-2 text-dark bg-white" mat-icon-button>
+
+                    <form [formGroup]="formChat" class="chat-form" (ngSubmit)="sendMessage()">
+                        <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
+                            <div class="flex-1  w-100">
+                                <input name="message" formControlName="message" class="form-control shadow-sm" type="text">
+                            </div>
+
+                            <div>
+                                <button [disabled]="this.formChat.invalid" type="submit" class="eee ml-2 text-dark bg-white" mat-icon-button>
                         <mat-icon class="ml-2">send</mat-icon>
                         </button>
+                            </div>
+
                         </div>
-
-                    </div>
-                </form>
+                    </form>
 
 
 
@@ -163,7 +152,7 @@
 
 
 
-                <!-- 
+                    <!-- 
                 <form (ngSubmit)="sendMessage()" class="chat-form">
 
                     <div class="form-group m-0 d-flex w-100 px-3 pt-2 pb-3 ">
@@ -179,6 +168,7 @@
 
                 </form> -->
 
+                </div>
             </div>
         </main>
         <!-- </div> -->

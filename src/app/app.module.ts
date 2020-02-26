@@ -18,6 +18,10 @@ import { AboutDialogComponent } from './components/_dialogs/about-dialog/about-d
 import { LoginComponent } from './components/login/login.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { UserProfileDialogComponent } from './components/_dialogs/user-profile-dialog/user-profile-dialog.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { FeedLayoutComponent } from './components/_layouts/feed-layout/feed-layout.component';
+import { ListVeiwComponent } from './components/list-veiw/list-veiw.component';
+import { PrivateChatComponent } from './components/private-chat/private-chat.component';
 
 
 
@@ -31,7 +35,11 @@ import { UserProfileDialogComponent } from './components/_dialogs/user-profile-d
     RegisterComponent,
     AboutDialogComponent,
     LoginComponent,
-    UserProfileDialogComponent
+    UserProfileDialogComponent,
+    FeedComponent,
+    FeedLayoutComponent,
+    ListVeiwComponent,
+    PrivateChatComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ export class WebLayoutComponent implements OnInit {
 
 //selected use
 selectedUser;
-startChat = false;
+startChat = true;
  
  
   
@@ -88,7 +88,7 @@ console.log(res);
       },
       err => {
 console.log(err);
-this.router.navigate(['/login']);
+// this.router.navigate(['/login']);
       }
     )
   }

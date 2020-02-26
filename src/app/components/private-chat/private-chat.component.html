@@ -1,0 +1,35 @@
+<div class="container">
+    <div *ngIf="loading else showMessages">
+        <div class="loading-con mt-5">
+            <svg class="spinner-container" viewBox="0 0 44 44">
+<circle class="path" cx="22" cy="22" r="20" fill="none" stroke-width="4"></circle>
+</svg>
+        </div>
+    </div>
+    <ng-template class="animated fadeInUp" #showMessages>
+
+        <div class="pt-4 text-center" *ngIf="datas.length < 1 else showData">No message found</div>
+        <ng-template #showData>
+            <div class=" you row animated animate-custom faster" *ngFor="let data of datas " [ngClass]="[data.userId === userID? 'me': 'you']">
+                <div class=" col-11 chat-box">
+                    <div class="chat-box-inner d-flex">
+                        <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                        <button mat-icon-button class="bg-light">
+                    <mat-icon>person</mat-icon>
+                </button>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="mb-0">{{data.message}} </p>
+                                <div>
+                                    <small class="float-right sent-icon"><mat-icon class="mb-0">done_all</mat-icon></small>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ng-template>
+</div>
+<!-- <h1>Welcome home</h1> -->

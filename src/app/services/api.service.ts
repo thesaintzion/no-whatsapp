@@ -27,7 +27,7 @@ userUrl = 'api/user';
 socket;
 readonly socketUrl: string = 'http://localhost:3500/';
   constructor(private http: HttpClient, private router: Router) { 
-    this.socket = io();
+    this.socket = io(this.socketUrl);
   }
   
   //SOCKET//

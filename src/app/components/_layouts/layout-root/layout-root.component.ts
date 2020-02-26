@@ -20,7 +20,7 @@ export class LayoutRootComponent implements OnInit {
   // }
  
   constructor() {
-    this.layout = WebLayoutComponent;
+    this.layout = MobileLayoutComponent;
 // setInterval( () => {
 //   // this.func();
 // }, 5000 );

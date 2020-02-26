@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   
   user: any  = localStorage.getItem('user');
-
   userID: any;
   userName: any;
   userEmail: any;

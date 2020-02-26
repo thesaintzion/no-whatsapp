@@ -1,0 +1,99 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: #0022ff !important;
+        // border-radius: 60px;
+        color: #ffffff;
+    }
+    .primary {
+        background: $primary;
+    }
+    .back-btn {
+        font-weight: 900;
+        // font-size: 60px;
+        margin-left: -15px;
+    }
+    .nav-search-con {
+        text-align: center;
+        .fancy-search-input {
+            height: 30px;
+            width: 100%;
+            background-color: rgb(238, 240, 246);
+            border-radius: 60px;
+        }
+    }
+    .activity-header {
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            background-color: #eee;
+            background-image: url('../../../../assets/img/user.png');
+            background-size: cover;
+            border-radius: 50%;
+        }
+        .activity-title {
+            font-size: 15px !important;
+            line-height: 20px;
+            font-weight: normal !important;
+        }
+        .activity-subtitle {
+            font-size: 14px !important;
+            line-height: 20px;
+            font-weight: 100 !important;
+            color: gray;
+        }
+    }
+    .feed-toolbar {
+        background: #FFFFFF;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        height: 54px;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        .nav-btn {
+            height: 54px;
+            border-radius: 0 !important;
+        }
+        .nav-btn.active {
+            border-bottom: 2px solid $primary !important;
+            color: $primary;
+            .mat-icon {
+                color: $primary;
+            }
+        }
+        .mat-icon.mat-badge {
+            margin-bottom: -10px !important;
+        }
+        input {
+            border-radius: 60px;
+        }
+    }
+    //////// Responsive ////////////
+    @media (max-width: 991.93px) {
+        .mat-toolbar {
+            input {
+                display: none
+            }
+        }
+    }
+    @media (min-width:768px) {}
+}

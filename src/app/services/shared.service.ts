@@ -15,7 +15,19 @@ import { UserProfileDialogComponent } from '../components/_dialogs/user-profile-
 export class SharedService {
 
   constructor(private snackBar: MatSnackBar, private dialog: MatDialog) { }
+showArrow: boolean;
+activityTitle = '';
+hasLogo:  boolean;
+hasSearch:  boolean;
+hasIconNavs:  boolean;
+isProfile:  boolean;
 
+user = {
+  id: '',
+  fullName: '',
+  status: '',
+  img: ''
+}
 
   openSnackBar(message: string, action: string, duration: number, panelClass: string,) {
     this.snackBar.open(message, action, {

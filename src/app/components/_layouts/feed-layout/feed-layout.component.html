@@ -1,0 +1,57 @@
+<mat-toolbar class="border-bottom feed-toolbar">
+    <div class="d-flex justify-content-between align-content-center align-items-center w-100">
+        <!-- <div *ngIf="isHandset$ | async">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              </button>
+        </div> -->
+
+        <div class="d-flex justify-content-between align-content-center align-items-center activity-header">
+            <button *ngIf="this.sharedServivce.showArrow" (click)="goBack()" class="nav-btn back-btn" mat-button>
+                <mat-icon>arrow_back_ios</mat-icon>
+               
+        </button>
+            <div *ngIf="this.sharedServivce.isProfile" class="user-profile">
+
+            </div>
+
+            <img *ngIf="this.sharedServivce.hasLogo" width="35px" src="../../../../assets/img/logo-1.png">
+            <!-- <button class="active nav-btn" mat-button>
+                <mat-icon >home</mat-icon>
+                </button> -->
+            <div class="d-flex flex-column">
+                <span class="color-primary ml-2 activity-title">{{this.sharedServivce.activityTitle}}</span>
+                <small *ngIf=" this.sharedServivce.isProfile" class="color-muted ml-2 activity-subtitle">Online</small>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="nav-search-con " *ngIf="this.sharedServivce.hasSearch">
+            <input class="form-control" placeholder="Search Here">
+        </div>
+
+        <div class="nav-profile-con" *ngIf=" this.sharedServivce.hasIconNavs">
+            <button routerLink="chat" routerLinkActive="active" class="nav-btn" mat-button>
+                <mat-icon matBadge="15" matBadgeColor="warn">chat_bubble_outline</mat-icon>
+        </button>
+
+            <button class="nav-btn" mat-button>
+                <mat-icon matBadge="90" matBadgeColor="warn">group</mat-icon>
+                <!-- <mat-icon>group</mat-icon> -->
+               
+        </button>
+            <button class="nav-btn" mat-button>
+           
+            <mat-icon>account_circle</mat-icon>
+           
+    </button>
+        </div>
+    </div>
+</mat-toolbar>
+<div class="pb-5">
+    <router-outlet>
+    </router-outlet>
+</div>
