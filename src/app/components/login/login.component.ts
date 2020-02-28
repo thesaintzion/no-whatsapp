@@ -44,31 +44,31 @@ get f() { return this.loginForm .controls; }
     userPass:  this.loginForm.value.userPass,
     }
     // 
-    this.apiservice.loginUser(user).subscribe(
-      res => {
-        console.log(res);
-        setTimeout( () =>{
-          this. loading =  false;
-          this.sharedService.openSnackBar(`Successfull!! `, 'ok', 5000, 'snack-blue-bg');
-          localStorage.setItem('NO_W_XX', res.token);
-          this.router.navigate(['/']);
+    // this.apiservice.loginUser(user).subscribe(
+    //   res => {
+    //     console.log(res);
+    //     setTimeout( () =>{
+    //       this. loading =  false;
+    //       this.sharedService.openSnackBar(`Successfull!! `, 'ok', 5000, 'snack-blue-bg');
+    //       localStorage.setItem('NO_W_XX', res.token);
+    //       this.router.navigate(['/']);
         
-        }, 3000);
+    //     }, 3000);
         
-      },
-      err => {
-        console.log(err);
-        setTimeout( () =>{
-        this. loading =  false;
-        if(err.error.message){
-          this.sharedService.openSnackBar(err.error.message, 'ok', 8000, 'snack-red-bg');
-        }else{
-          this.sharedService.openSnackBar('Oops! Unknown error occured, please try again', 'ok', 8000, 'snack-red-bg');
-        }
-      }, 3000);
+    //   },
+    //   err => {
+    //     console.log(err);
+    //     setTimeout( () =>{
+    //     this. loading =  false;
+    //     if(err.error.message){
+    //       this.sharedService.openSnackBar(err.error.message, 'ok', 8000, 'snack-red-bg');
+    //     }else{
+    //       this.sharedService.openSnackBar('Oops! Unknown error occured, please try again', 'ok', 8000, 'snack-red-bg');
+    //     }
+    //   }, 3000);
         
-      }
-    )
+    //   }
+    // )
 
    
     

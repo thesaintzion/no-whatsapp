@@ -57,6 +57,10 @@
                 top: 0;
             }
         }
+        .mat-card-title {
+            font-size: 14px !important;
+            font-weight: bolder !important;
+        }
     }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
@@ -67,6 +71,14 @@
     @media (max-width:767px) {
         .container {
             padding: 0 !important
+        }
+        .feed {
+            border-radius: 0 !important;
+            border: 0 !important;
+            .mat-card {
+                border-radius: 0 !important;
+                border: 0 !important;
+            }
         }
     }
 }

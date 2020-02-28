@@ -25,19 +25,10 @@
         // border-radius: 60px;
         color: #ffffff;
     }
-    // overrides
-    .mat-toolbar {
-        // height: 56px;
-        background: #FFFFFF;
-    }
     .content {
-        .mat-toolbar {
-            background: #FFFFFF;
-            // box-shadow: 0px 4px 20px #EAEBF0;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-            height: 54px;
+        height: 100vh !important;
+        .router-con {
+            position: relative;
         }
     }
     .sidenav {
@@ -82,9 +73,6 @@
                 margin-left: 10px;
             }
         }
-        .mat-list-item.main-item {
-            // border-bottom: 1px solid #EAEBF0;
-        }
         .mat-list {
             padding-top: 0;
             .mat-icon {
@@ -108,11 +96,7 @@
     }
     // Content
     //////// Responsive ////////////
-    @media (max-width: 991.93px) {
-        .mat-toolbar {
-            overflow-x: scroll;
-        }
-    }
+    @media (max-width: 991.93px) {}
     @media (min-width:768px) {
         // .ipage-red {
         //     background: yellow !important;

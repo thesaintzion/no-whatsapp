@@ -8,24 +8,25 @@
 
 
         <div class="row no-gutters">
-            <div class="col-md-4 bg-primary " style="height: 100vh;">
+            <div class="col-md-4 bg-white border " style="height: 100vh;">
 
             </div>
             <div class="col-md-8">
-
                 <mat-nav-list>
                     <mat-list>
-                        <mat-list-item routerLink="chat/4234687345">
+                        <mat-list-item *ngFor="let user of users" routerLink="/chat/{{user.id}}">
                             <mat-icon mat-list-icon class="bg-light"></mat-icon>
-                            <span mat-line>Saint Zion</span>
+                            <span mat-line>{{user.name}}</span>
                             <span class="status online" mat-line>Online</span>
                         </mat-list-item>
-                        <mat-list-item routerLink="chat/4234687345">
+
+
+                        <mat-list-item routerLink="/chat/4234687345">
                             <mat-icon mat-list-icon class="bg-light"></mat-icon>
                             <span mat-line>Mahammed B.</span>
                             <span class="status" mat-line>20/02/2020</span>
                         </mat-list-item>
-                        <mat-list-item routerLink="chat/4234687345">
+                        <mat-list-item routerLink="/chat/555687345">
                             <mat-icon mat-list-icon class="bg-light"></mat-icon>
                             <span mat-line>Goodluck Jona</span>
                             <span class="status" mat-line>20/02/2020</span>
@@ -46,6 +47,11 @@
             <button class="bg-white" mat-icon-button mat-raised-button>
                 <mat-icon>power_settings_new</mat-icon>
         </button>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <input formControlName="userName" placeholder="Name">
+                <input formControlName="userId" placeholder="Id">
+                <button class="btn btn-sm  border">Login</button>
+            </form>
         </div>
 
     </mat-sidenav>
@@ -61,8 +67,10 @@
 
         </div> -->
         <!-- Add Content Here -->
-        <router-outlet>
-        </router-outlet>
+        <div class="router-con">
+            <router-outlet>
+            </router-outlet>
+        </div>
 
     </mat-sidenav-content>
 </mat-sidenav-container>

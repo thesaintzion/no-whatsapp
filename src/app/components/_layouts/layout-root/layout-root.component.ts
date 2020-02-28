@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WebLayoutComponent } from '../web-layout/web-layout.component';
-import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
+// import { WebLayoutComponent } from '../web-layout/web-layout.component';
+// import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
 // import { setInterval } from 'timers';
 
 @Component({
@@ -20,7 +20,7 @@ export class LayoutRootComponent implements OnInit {
   // }
  
   constructor() {
-    this.layout = MobileLayoutComponent;
+    // this.layout = MobileLayoutComponent;
 // setInterval( () => {
 //   // this.func();
 // }, 5000 );

@@ -29,36 +29,36 @@ export class HomeComponent implements OnInit {
 
   
 
-  getMessages() { 
-    this.apiService.getMessages().subscribe(
-      res => {
-        console.log(res);
-        this.datas = res.data;
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
+  // getMessages() { 
+  //   this.apiService.getMessages().subscribe(
+  //     res => {
+  //       console.log(res);
+  //       this.datas = res.data;
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   )
+  // }
 
 
    //get profile
 
-   getProfile(){
-    this.apiService.getProfile().subscribe(
-      res => {
-this.userID = res.user._id;
-this.userName = res.user.userName;
-this.userEmail = res.user.userEmail;
-this.getId(res.user._id);
+//    getProfile(){
+//     this.apiService.getProfile().subscribe(
+//       res => {
+// this.userID = res.user._id;
+// this.userName = res.user.userName;
+// this.userEmail = res.user.userEmail;
+// this.getId(res.user._id);
 
-console.log(res);
-      },
-      err => {
-console.log(err);
-      }
-    )
-  }
+// console.log(res);
+//       },
+//       err => {
+// console.log(err);
+//       }
+//     )
+//   }
 
   // 
   getId(userId: any){
@@ -68,16 +68,16 @@ console.log(err);
 
   ngOnInit() {
 
-    this.apiService.socketListen('update').subscribe(
-      res =>{
-        this.getMessages();
-        window.scrollTo(0,document.body.scrollHeight);
-      })
+    // this.apiService.socketListen('update').subscribe(
+    //   res =>{
+    //     // this.getMessages();
+    //     window.scrollTo(0,document.body.scrollHeight);
+    //   })
   
-    this.getMessages();
+    // this.getMessages();
 
   //
-this.getProfile();
+// this.getProfile();
 window.scrollTo(0, document.body.scrollHeight);
   }
 

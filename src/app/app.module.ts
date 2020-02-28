@@ -22,6 +22,10 @@ import { FeedComponent } from './components/feed/feed.component';
 import { FeedLayoutComponent } from './components/_layouts/feed-layout/feed-layout.component';
 import { ListVeiwComponent } from './components/list-veiw/list-veiw.component';
 import { PrivateChatComponent } from './components/private-chat/private-chat.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { StatusListComponent } from './components/status-list/status-list.component';
+import { StatusComponent } from './components/status/status.component';
 
 
 
@@ -39,7 +43,11 @@ import { PrivateChatComponent } from './components/private-chat/private-chat.com
     FeedComponent,
     FeedLayoutComponent,
     ListVeiwComponent,
-    PrivateChatComponent
+    PrivateChatComponent,
+    FriendsComponent,
+    ProfileComponent,
+    StatusListComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

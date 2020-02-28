@@ -39,26 +39,23 @@ export class UserProfileDialogComponent implements OnInit {
 
 
     // make call and get single user via email
-    getSingleUser(){
-      // let userEmail = {
-      //   userEmail: this.userEmail
-      // }
-      console.log(this.userEmail);
-    this.apiService.getSingleUsers(this.userEmail).subscribe(
-      res => {
-        this.mainUserEmail = res.user.userEmail;
-        this.userName = res.user.userName;
-        this.createdAt = res.user.createdAt;
-        this.userSlug =  res.user.userName.replace(/ /g, '').toLowerCase();
-        console.log(res,  this.user);
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
+  //   getSingleUser(){
+  //     console.log(this.userEmail);
+  //   this.apiService.getSingleUsers(this.userEmail).subscribe(
+  //     res => {
+  //       this.mainUserEmail = res.user.userEmail;
+  //       this.userName = res.user.userName;
+  //       this.createdAt = res.user.createdAt;
+  //       this.userSlug =  res.user.userName.replace(/ /g, '').toLowerCase();
+  //       console.log(res,  this.user);
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   )
+  // }
   ngOnInit() {
-    this.getSingleUser();
+    // this.getSingleUser();
     
   }
 

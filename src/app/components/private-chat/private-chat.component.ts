@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { ApiService } from 'src/app/services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-private-chat',
@@ -12,19 +13,7 @@ export class PrivateChatComponent implements OnInit {
     fullName;
     status;
     img;
-    loading = true;
-
-  constructor(public sharedServivce: SharedService, private apiService: ApiService) {
-    this.sharedServivce.activityTitle =  'Saint Zion';
-    this.sharedServivce.showArrow = true; 
-    this.sharedServivce.hasLogo = false;
-    this.sharedServivce.hasSearch = false ;
-    this.sharedServivce.hasIconNavs = false;
-    this.sharedServivce.isProfile =  true;
-    window.scrollTo(0,document.body.scrollHeight);
-    this.getMessages();
-   }
-
+    loading: boolean;
    datas = [];
    noMessage = true;
    socket;
@@ -33,42 +22,76 @@ export class PrivateChatComponent implements OnInit {
    userID: any;
    userName: any;
    userEmail: any;
- 
- 
 
- 
+   //
+   typing = false;
+
+   noMessagesMsg = 'No messages found';
+
+  constructor(public sharedServivce: SharedService, private apiService: ApiService, private activatedRoute: ActivatedRoute) {
+    this.sharedServivce.activityTitle =  'Saint Zion';
+    this.sharedServivce.showArrow = true; 
+    this.sharedServivce.hasLogo = false;
+    this.sharedServivce.hasSearch = false ;
+    this.sharedServivce.hasIconNavs = false;
+    this.sharedServivce.isProfile =  true;
+    this.sharedServivce.footer = false;
+    window.scrollTo(0,document.body.scrollHeight);
+    // this.getMessages();
+   }
+
    
  
+ 
+//get messages from db
    getMessages() { 
+    this.loading = true;
      this.apiService.getMessages().subscribe(
        res => {
          console.log('the res', res);
          this.datas = res.data;
+         setTimeout( () =>{
+          this.loading = false;
+        }, 3000)
        },
        err => {
+        setTimeout( () =>{
+          this.loading = false;
+        }, 3000)
          console.log('the err', err);
        }
      )
+   }
+
+   //change vioce chat button to 'send button' on focus
+   switchBtn(e){
+     console.log(e);
+     if(e !== ''){
+      this.typing = true;
+     }else{
+      this.typing = false;
+     }
+
    }
  
  
     //get profile
  
-    getProfile(){
-     this.apiService.getProfile().subscribe(
-       res => {
- this.userID = res.user._id;
- this.userName = res.user.userName;
- this.userEmail = res.user.userEmail;
- this.getId(res.user._id);
+//     getProfile(){
+//      this.apiService.getProfile().subscribe(
+//        res => {
+//  this.userID = res.user._id;
+//  this.userName = res.user.userName;
+//  this.userEmail = res.user.userEmail;
+//  this.getId(res.user._id);
  
- console.log(res);
-       },
-       err => {
- console.log(err);
-       }
-     )
-   }
+//  console.log(res);
+//        },
+//        err => {
+//  console.log(err);
+//        }
+//      )
+//    }
  
    // 
    getId(userId: any){
@@ -77,18 +100,32 @@ export class PrivateChatComponent implements OnInit {
  
  
    ngOnInit() {
-    setTimeout( () =>{
-      this.loading = false;
-              }, 3000)
+
+    this.activatedRoute.paramMap.subscribe(params => {
+      console.log(params.get('reciever'));
+      if(params.get('reciever')){
+       this.getMessages();
+      }
+    });
+
+
      this.apiService.socketListen('update').subscribe(
        res =>{
          this.getMessages();
          window.scrollTo(0,document.body.scrollHeight);
        })
+
+       this.apiService.socketListen('connection').subscribe(
+        res =>{
+          this.getMessages();
+          window.scrollTo(0,document.body.scrollHeight);
+        })
+
+       this.getMessages();
    
    
    //
- this.getProfile();
+//  this.getProfile();
  window.scrollTo(0, document.body.scrollHeight);
 
 

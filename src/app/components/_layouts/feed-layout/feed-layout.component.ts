@@ -17,6 +17,7 @@ export class FeedLayoutComponent implements OnInit {
     this.sharedServivce.hasSearch = true ;
     this.sharedServivce.hasIconNavs = true;
     this.sharedServivce.isProfile = false;
+    this.sharedServivce.footer = true;
    }
 
   goBack(){
@@ -27,6 +28,7 @@ export class FeedLayoutComponent implements OnInit {
     this.sharedServivce.hasSearch = true;
     this.sharedServivce.hasIconNavs = true;
     this.sharedServivce.isProfile = false;
+    this.sharedServivce.footer = true;
   }
   ngOnInit() {
     // this.sharedServivce.activityTitle = 'WhatsApp';

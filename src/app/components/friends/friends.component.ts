@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
-  selector: 'app-list-veiw',
-  templateUrl: './list-veiw.component.html',
-  styleUrls: ['./list-veiw.component.scss']
+  selector: 'app-friends',
+  templateUrl: './friends.component.html',
+  styleUrls: ['./friends.component.scss']
 })
-export class ListVeiwComponent implements OnInit {
+export class FriendsComponent implements OnInit {
 
   constructor(public sharedServivce: SharedService) { 
-    // this.sharedServivce.activityTitle = 'Chats';
+    // this.sharedServivce.activityTitle = 'Friends';
     // this.sharedServivce.showArrow = true; 
     // this.sharedServivce.hasLogo = false;
     // this.sharedServivce.hasSearch = false ;
@@ -26,7 +26,6 @@ export class ListVeiwComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
 }

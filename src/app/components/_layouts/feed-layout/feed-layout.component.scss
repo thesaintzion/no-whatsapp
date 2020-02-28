@@ -59,41 +59,85 @@
             color: gray;
         }
     }
-    .feed-toolbar {
-        background: #FFFFFF;
+    .feed-toolbar-header {
         position: sticky;
         top: 0;
-        z-index: 1;
-        height: 54px;
-        position: fixed;
-        width: 100%;
         left: 0;
-        top: 0;
-        .nav-btn {
+        right: 0;
+        width: 100%;
+        z-index: 20;
+        .feed-toolbar {
+            z-index: 20;
             height: 54px;
+            background-color: #ffffff;
+            .nav-btn {
+                height: 54px;
+                border-radius: 0 !important;
+            }
+            .nav-btn.active {
+                border-bottom: 2px solid $primary !important;
+                color: $primary;
+                .mat-icon {
+                    color: $primary;
+                }
+            }
+            .mat-icon.mat-badge {
+                margin-bottom: -10px !important;
+            }
+            input {
+                border-radius: 60px;
+            }
+        }
+    }
+    .feed-toolbar-footer {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 20;
+        display: none !important;
+        .mat-toolbar {
+            height: 50px;
+            background-color: #ffffff;
+        }
+        .mat-toolbar {
+            padding: 0 !important;
+        }
+        .nav-btn {
+            height: 100% !important;
             border-radius: 0 !important;
+            height: 45px;
+        }
+        .mat-icon.mat-badge {
+            margin-bottom: -8px !important;
         }
         .nav-btn.active {
-            border-bottom: 2px solid $primary !important;
+            // border-bottom: 4px solid $primary !important;
             color: $primary;
             .mat-icon {
                 color: $primary;
             }
         }
-        .mat-icon.mat-badge {
-            margin-bottom: -10px !important;
-        }
-        input {
-            border-radius: 60px;
+        .mat-icon {
+            // font-weight: 50 !important;
         }
     }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .mat-toolbar {
-            input {
-                display: none
-            }
+            overflow-x: scroll;
         }
     }
-    @media (min-width:768px) {}
+    @media (max-width:767px) {
+        .mat-toolbar {
+            overflow-x: scroll;
+        }
+        .feed-toolbar-footer {
+            display: block !important;
+        }
+        .hide-sm {
+            display: none;
+        }
+    }
 }

@@ -1,62 +1,103 @@
-.chat-box .user-name {
-    margin-bottom: 0;
-    font-size: 17px;
-}
-
-.chat-box .user-name span {
-    font-size: 14px;
-    font-weight: 200;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.me,
-.you {
-    padding-top: 10px;
-    padding-bottom: 0 !important;
-    margin-bottom: 10px;
-}
-
-.sent-icon {
-    .mat-icon {
-        font-size: 18px;
-        color: #03ecb2;
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    .color-primary {
+        color: #0022ff !important;
     }
-}
-
-.chat-box .card {
-    border-radius: 20px;
-}
-
-.chat-box .card .card-body {
-    padding: 0.50rem;
-    padding-bottom: 0 !important;
-}
-
-.chat-box .card p {
-    font-size: 14px;
-}
-
-.chat-box .chat-box-inner {
-    display: inline-block;
-    width: auto;
-}
-
-.me .chat-box .card {
-    background-color: rgb(5, 39, 230);
-    //  background-color: rgb(97, 172, 253);
-    color: #ffffff;
-    border: 0;
-}
-
-.me {
-    justify-content: flex-end !important
-}
-
-.me .chat-box .chat-box-inner {
-    float: right;
-}
-
-.row.animate-custom:last-of-type {
-    -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft;
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: #0022ff !important;
+        // border-radius: 60px;
+        color: #ffffff;
+    }
+    .primary {
+        background: $primary;
+    }
+    .back-btn {
+        font-weight: 900;
+        // font-size: 60px;
+        margin-left: -15px;
+    }
+    .chat-box .user-name {
+        margin-bottom: 0;
+        font-size: 17px;
+    }
+    .chat-box .user-name span {
+        font-size: 14px;
+        font-weight: 200;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .me,
+    .you {
+        padding-top: 10px;
+        padding-bottom: 0 !important;
+        margin-bottom: 10px;
+    }
+    .sent-icon {
+        .mat-icon {
+            font-size: 18px;
+            color: #03ecb2;
+        }
+    }
+    .chat-box .card {
+        border-radius: 20px;
+    }
+    .chat-box .card .card-body {
+        padding: 0.50rem;
+        padding-bottom: 0 !important;
+    }
+    .chat-box .card p {
+        font-size: 14px;
+    }
+    .chat-box .chat-box-inner {
+        display: inline-block;
+        width: auto;
+    }
+    .me .chat-box .card {
+        background-color: rgb(5, 39, 230);
+        //  background-color: rgb(97, 172, 253);
+        color: #ffffff;
+        border: 0;
+    }
+    .me {
+        justify-content: flex-end !important
+    }
+    .me .chat-box .chat-box-inner {
+        float: right;
+    }
+    .row.animate-custom:last-of-type {
+        -webkit-animation-name: fadeInLeft;
+        animation-name: fadeInLeft;
+    }
+    .private-chat {
+        min-height: 100vh;
+    }
+    .footer-form {
+        position: sticky;
+        left: 0;
+        right: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px;
+        background-color: #eee;
+        .input-control {
+            padding: 0 20px 0 20px;
+            width: 100% !important;
+        }
+        input {
+            border-radius: 60px;
+            height: 50px !important;
+        }
+    }
 }

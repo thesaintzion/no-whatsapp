@@ -1,57 +1,75 @@
-<mat-toolbar class="border-bottom feed-toolbar">
-    <div class="d-flex justify-content-between align-content-center align-items-center w-100">
-        <!-- <div *ngIf="isHandset$ | async">
-            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-              </button>
-        </div> -->
+<div class="feed-toolbar-header">
+    <mat-toolbar class="border-bottom feed-toolbar">
+        <div class="d-flex justify-content-between align-content-center align-items-center w-100">
 
-        <div class="d-flex justify-content-between align-content-center align-items-center activity-header">
-            <button *ngIf="this.sharedServivce.showArrow" (click)="goBack()" class="nav-btn back-btn" mat-button>
+            <div class="d-flex justify-content-between align-content-center align-items-center activity-header">
+                <button *ngIf="this.sharedServivce.showArrow" (click)="goBack()" class="nav-btn back-btn" mat-button>
                 <mat-icon>arrow_back_ios</mat-icon>
                
         </button>
-            <div *ngIf="this.sharedServivce.isProfile" class="user-profile">
+                <div *ngIf="this.sharedServivce.isProfile" class="user-profile">
 
+                </div>
+
+                <img routerLink="/" *ngIf="this.sharedServivce.hasLogo" width="35px" src="../../../../assets/img/logo-1.png">
+
+                <div class="d-flex flex-column">
+                    <span style="color: #000000" class="ml-2 activity-title">{{this.sharedServivce.activityTitle}}</span>
+                    <small *ngIf=" this.sharedServivce.isProfile" class="color-muted ml-2 activity-subtitle color-primary ">Online</small>
+                </div>
             </div>
 
-            <img *ngIf="this.sharedServivce.hasLogo" width="35px" src="../../../../assets/img/logo-1.png">
-            <!-- <button class="active nav-btn" mat-button>
-                <mat-icon >home</mat-icon>
-                </button> -->
-            <div class="d-flex flex-column">
-                <span class="color-primary ml-2 activity-title">{{this.sharedServivce.activityTitle}}</span>
-                <small *ngIf=" this.sharedServivce.isProfile" class="color-muted ml-2 activity-subtitle">Online</small>
+            <div class="nav-search-con hide-sm" *ngIf="this.sharedServivce.hasSearch">
+                <input class="form-control" placeholder="Search Here">
             </div>
 
-
-
-
-        </div>
-
-        <div class="nav-search-con " *ngIf="this.sharedServivce.hasSearch">
-            <input class="form-control" placeholder="Search Here">
-        </div>
-
-        <div class="nav-profile-con" *ngIf=" this.sharedServivce.hasIconNavs">
-            <button routerLink="chat" routerLinkActive="active" class="nav-btn" mat-button>
+            <div class="nav-profile-con" *ngIf=" this.sharedServivce.hasIconNavs">
+                <button routerLink="/chat" routerLinkActive="active" class="nav-btn hide-sm" mat-button>
                 <mat-icon matBadge="15" matBadgeColor="warn">chat_bubble_outline</mat-icon>
-        </button>
+             </button>
 
-            <button class="nav-btn" mat-button>
+                <button class="nav-btn hide-sm" routerLink="/friends" routerLinkActive="active" mat-button>
                 <mat-icon matBadge="90" matBadgeColor="warn">group</mat-icon>
-                <!-- <mat-icon>group</mat-icon> -->
-               
-        </button>
-            <button class="nav-btn" mat-button>
-           
-            <mat-icon>account_circle</mat-icon>
-           
-    </button>
+                </button>
+
+                <button routerLink="/profile/456783945" routerLinkActive="active" class="nav-btn hide-sm" mat-button>
+            <mat-icon>person</mat-icon>
+            </button>
+            </div>
         </div>
-    </div>
-</mat-toolbar>
-<div class="pb-5">
+    </mat-toolbar>
+</div>
+
+
+
+<div style="min-height: 100vh">
     <router-outlet>
     </router-outlet>
+</div>
+
+<div *ngIf="this.sharedServivce.footer" class="feed-toolbar-footer ">
+    <mat-toolbar class="border-top">
+        <div class="d-flex justify-content-between align-content-center align-items-center w-100">
+
+            <button [routerLinkActiveOptions]="{exact:
+                true}" routerLink="/" routerLinkActive="active" class="nav-btn" mat-button>
+                    <mat-icon >home</mat-icon>
+            </button>
+
+            <button routerLink="/chat" routerLinkActive="active" class="nav-btn" mat-button>
+                    <mat-icon matBadge="15" matBadgeColor="warn">chat_bubble_outline</mat-icon>
+                 </button>
+
+            <button routerLink="/status" routerLinkActive="active" class="nav-btn" mat-button>
+                    <mat-icon>remove_red_eye</mat-icon>
+                 </button>
+            <button routerLink="/friends" routerLinkActive="active" class="nav-btn" mat-button>
+                    <mat-icon>group</mat-icon>
+                 </button>
+            <button routerLink="/profile/456783945" routerLinkActive="active" class="nav-btn" mat-button>
+                <mat-icon>person</mat-icon>
+                </button>
+
+        </div>
+    </mat-toolbar>
 </div>

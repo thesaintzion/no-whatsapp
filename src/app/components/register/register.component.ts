@@ -34,50 +34,50 @@ get f() { return this.registerForm.controls; }
 
 
 //  on submit of registration form
- onRegFormSubmit() {
-  if(this.registerForm.invalid){
-    this.sharedService.openSnackBar('Please fill the form', 'ok', 8000, 'snack-red-bg');
-  }else{
-    this. loading =  true;
-    let user = {
-    userName:  this.registerForm.value.userName,
-    userEmail: this.registerForm.value.userEmail,
-    userPass:  this.registerForm.value.userPass,
-    }
-    // 
-    this.apiservice.registerUser(user).subscribe(
-      res => {
-        console.log(res);
-        setTimeout( () =>{
-          this. loading =  false;
-          this.sharedService.openSnackBar('Successfull!!', 'ok', 5000, 'snack-blue-bg');
-         this.router.navigate(['/login']);
-        }, 3000);
+//  onRegFormSubmit() {
+//   if(this.registerForm.invalid){
+//     this.sharedService.openSnackBar('Please fill the form', 'ok', 8000, 'snack-red-bg');
+//   }else{
+//     this. loading =  true;
+//     let user = {
+//     userName:  this.registerForm.value.userName,
+//     userEmail: this.registerForm.value.userEmail,
+//     userPass:  this.registerForm.value.userPass,
+//     }
+//     // 
+//     this.apiservice.registerUser(user).subscribe(
+//       res => {
+//         console.log(res);
+//         setTimeout( () =>{
+//           this. loading =  false;
+//           this.sharedService.openSnackBar('Successfull!!', 'ok', 5000, 'snack-blue-bg');
+//          this.router.navigate(['/login']);
+//         }, 3000);
         
-      },
-      err => {
+//       },
+//       err => {
 
-        console.log(err);
-        setTimeout( () =>{
-          this. loading =  false;
-          if(err.error.message){
-            this.sharedService.openSnackBar(err.error.message, 'ok', 8000, 'snack-red-bg');
-          }else{
-            this.sharedService.openSnackBar('Oops! Unknown error occured, please try again', 'ok', 8000, 'snack-red-bg');
-          }
+//         console.log(err);
+//         setTimeout( () =>{
+//           this. loading =  false;
+//           if(err.error.message){
+//             this.sharedService.openSnackBar(err.error.message, 'ok', 8000, 'snack-red-bg');
+//           }else{
+//             this.sharedService.openSnackBar('Oops! Unknown error occured, please try again', 'ok', 8000, 'snack-red-bg');
+//           }
           
-        }, 3000);
+//         }, 3000);
         
-      }
-    )
+//       }
+//     )
 
    
     
-  }
+//   }
 
 
 
- }
+//  }
 
 
 

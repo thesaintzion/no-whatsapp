@@ -21,6 +21,7 @@ hasLogo:  boolean;
 hasSearch:  boolean;
 hasIconNavs:  boolean;
 isProfile:  boolean;
+footer: boolean;
 
 user = {
   id: '',
