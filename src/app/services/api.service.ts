@@ -12,22 +12,22 @@ export class ApiService {
 
 
 // Get requests //
-getMessagesUrl = 'http://localhost:3500/api/chat/get-messages';
-// getMessagesUrl = 'api/chat/get-messages';
+// getMessagesUrl = 'http://localhost:3500/api/chat/get-messages';
+getMessagesUrl = 'api/chat/get-messages';
 
 
 // Post requests //
-sendMessageUrl = 'http://localhost:3500/api/chat/message';
-// sendMessageUrl = 'api/chat/message';
+// sendMessageUrl = 'http://localhost:3500/api/chat/message';
+sendMessageUrl = 'api/chat/message';
 
 
-userUrl = 'http://localhost:3500/api/user';
-// userUrl = 'api/user';
+// userUrl = 'http://localhost:3500/api/user';
+userUrl = 'api/user';
 
 socket;
 readonly socketUrl: string = 'http://localhost:3500/';
   constructor(private http: HttpClient, private router: Router) { 
-    this.socket = io(this.socketUrl);
+    this.socket = io();
   }
   
   //SOCKET//
@@ -78,9 +78,12 @@ readonly socketUrl: string = 'http://localhost:3500/';
   getMessages() {
     return this.http.get<any>(this.getMessagesUrl);
   }
-  
-
   postMessage(){
      
+  }
+
+  textApi(){
+    return this.http.get<any>('https://saint-api.herokuapp.com/users');
+    
   }
 }

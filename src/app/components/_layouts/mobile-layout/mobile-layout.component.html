@@ -2,16 +2,14 @@
 
 
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-        <!-- <mat-toolbar class="bg-light-primary">
+        <mat-toolbar class="">
             <p>Notice...</p>
-        </mat-toolbar> -->
+        </mat-toolbar>
 
 
         <div class="row no-gutters">
-            <div class="col-md-4 bg-white border " style="height: 100vh;">
 
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <mat-nav-list>
                     <mat-list>
                         <mat-list-item *ngFor="let user of users" routerLink="/chat/{{user.id}}">
@@ -47,30 +45,67 @@
             <button class="bg-white" mat-icon-button mat-raised-button>
                 <mat-icon>power_settings_new</mat-icon>
         </button>
-            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-                <input formControlName="userName" placeholder="Name">
-                <input formControlName="userId" placeholder="Id">
-                <button class="btn btn-sm  border">Login</button>
-            </form>
+
         </div>
 
     </mat-sidenav>
 
+    <!-- CONTENT -->
     <mat-sidenav-content class="content">
+
+        <mat-toolbar class="border-bottom feed-toolbar">
+            <div class="d-flex justify-content-between align-content-center align-items-center w-100">
+                <div>
+                    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+                </div>
+                <div class="d-flex justify-content-between align-content-center align-items-center activity-header">
+                    <div class="user-profile">
+
+                    </div>
+
+                    <img routerLink="/" width="35px" src="../../../../assets/img/logo-1.png">
+
+                    <div class="d-flex flex-column">
+                        <span style="color: #000000" class="ml-2 activity-title">Saint Zion</span>
+                        <small class="color-muted ml-2 activity-subtitle color-primary ">Online</small>
+                    </div>
+                </div>
+
+                <div class="nav-search-con hide-sm">
+                    <input class="form-control" placeholder="Search Here">
+                </div>
+
+                <div class="nav-profile-con">
+                    <button routerLink="/chat" routerLinkActive="active" class="nav-btn hide-sm" mat-button>
+                        <mat-icon matBadge="15" matBadgeColor="warn">chat_bubble_outline</mat-icon>
+                     </button>
+
+                    <button class="nav-btn hide-sm" routerLink="/friends" routerLinkActive="active" mat-button>
+                        <mat-icon matBadge="90" matBadgeColor="warn">group</mat-icon>
+                        </button>
+
+                    <button routerLink="/profile/456783945" routerLinkActive="active" class="nav-btn hide-sm" mat-button>
+                    <mat-icon>person</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-toolbar>
+
+
         <!-- <div class="h-100  d-flex text-center align-items-center align-items-center w-100 ">
             <div class="text-center  w-100">
                 <p>Welcome, Saint Zion</p>
                 <img src="../../../../assets/img/logo-1.png">
 
             </div>
-
-
         </div> -->
         <!-- Add Content Here -->
-        <div class="router-con">
+        <!-- <div class="router-con">
             <router-outlet>
             </router-outlet>
-        </div>
+        </div> -->
 
     </mat-sidenav-content>
 </mat-sidenav-container>

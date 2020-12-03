@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 //  getter for registerFrom
 get f() { return this.registerForm.controls; }
 
-
+onRegFormSubmit() {}
 //  on submit of registration form
 //  onRegFormSubmit() {
 //   if(this.registerForm.invalid){

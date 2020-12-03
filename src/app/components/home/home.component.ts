@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private apiService: ApiService) { 
-    this.socket = io(this.url);
+    // this.socket = io(this.url);
   }
 
   
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   // 
   getId(userId: any){
-    this.userID = userId;
+    // this.userID = userId;
   }
 
 

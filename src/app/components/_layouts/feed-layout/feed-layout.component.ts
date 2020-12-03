@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-feed-layout',
@@ -10,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class FeedLayoutComponent implements OnInit {
 
-  constructor(public sharedServivce: SharedService, public router: Router, private location: Location) {
+  constructor(public sharedServivce: SharedService, public router: Router, private location: Location, private apiServices: ApiService) {
     this.sharedServivce.activityTitle = 'WhatsApp';
     this.sharedServivce.showArrow = false;
     this.sharedServivce.hasLogo = true;
@@ -31,6 +32,14 @@ export class FeedLayoutComponent implements OnInit {
     this.sharedServivce.footer = true;
   }
   ngOnInit() {
+    this.apiServices.textApi().subscribe(
+      res => {
+        console.log('Res From Api', res)
+      },
+      err => {
+        console.log('Error From Api', err)
+      }
+    )
     // this.sharedServivce.activityTitle = 'WhatsApp';
     // this.sharedServivce.showArrow = false;
     // this.sharedServivce.hasLogo = true;
